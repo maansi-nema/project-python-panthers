@@ -1,9 +1,18 @@
 import os
 from flask import Flask, render_template, request
 from dotenv import load_dotenv
+from peewee import *
 
-load_dotenv()
+load_dotenv('.env')
+...
 app = Flask(__name__)
+
+mydb = MYSQLDatabase(os.getenv("MYSQL_DATABASE"), user=os.getenv("MYSQL_USER"),
+password=os.getenv("MYSQL_PASSWORD"), host=os.getenv("MYSQL_HOST"),
+port=3306)
+
+print(mydb)
+...
 
 @app.route('/')
 def index():
@@ -67,6 +76,7 @@ def joshEducation():
 @app.route('/maansi-education')
 def manEducation():
     return render_template('education.html', uni="University of Michigan", fact="I went to Novi High School in Novi, MI", pic1='/img/u-mich.jpg',pic2='img/u-mich2.jpg', map="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2952.0224758585864!2d-83.74041278454628!3d42.278043579192584!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x883cae38e7de1701%3A0x5ba14e5178e997e3!2sUniversity%20of%20Michigan!5e0!3m2!1sen!2sca!4v1654400474561!5m2!1sen!2sca",url=os.getenv("URL"))
+
 
 
 
