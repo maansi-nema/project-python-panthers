@@ -7,12 +7,12 @@ function fetchData() {
             return response.json();
         })
         .then(data => {
-            const html = data.data
+            const html = data.timeline_posts
                 .map(user => {
                     return 
                     <div class="user"> 
-                    <p>Name: ${user.first_name}</p>
-                    <p>Name: ${user.email}</p>
+                    <p>Name: ${name}</p>
+                    <p>Name: ${email}</p>
                     </div>
                     ;
                 })
