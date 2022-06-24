@@ -7,17 +7,18 @@ function fetchData() {
             return response.json();
         })
         .then(data => {
-            const html = data.timeline_posts
-                .map(user => {
-                    return 
-                    <div class="user"> 
-                    <p>Name: ${name}</p>
-                    <p>Name: ${email}</p>
+            const html = data.timeline_posts.map(user => {
+                    return `
+                    <div class ="timeline-user"> 
+                    <p>Name: ${user.name}</p>
+                    <p>Email: ${user. email}</p>
+                    <p>Content: ${user. content}</p>
                     </div>
-                    ;
+                    `;
+        
                 })
-                .join("");
-                document.querySelector("#app").insertAdjacentHTML("afterbegin", html);
+                .join('');
+                console.log(html);
 
         })
         .catch(error => {
