@@ -1,5 +1,5 @@
 function fetchData() {
-    fetch("http://104.131.10.43:5000/timeline")
+    fetch('/api/timeline_post')
         .then(response => {
             if (!response.ok){
                 throw Error("ERROR");
