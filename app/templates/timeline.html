@@ -19,6 +19,7 @@
         <title>Get Fetch API</title>
     
 <body>
+    <div id="app"></div>
     <form id="form">
         <input name="name" type="text">
         <input name="email" type="text">
@@ -27,26 +28,7 @@
     </form>
 </body>
 
-<script>
-    const form = document.getElementByID('form');
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        const prePayload = new FormData(form);
-        const payload = new URLSearchParams(prePayload);
-
-        console.log([...payload])
-
-        fetch('http://104.131.10.43:5000/', {
-            method: "POST", 
-            body: payload,
-        })
-        .then(res => res.json())
-        .then(data => console.log(data))
-        .catch(err => console.log(err))
-        
-    })
-</script>
+<script src="timeline.js"></script>
 </body>
 
 </html>
