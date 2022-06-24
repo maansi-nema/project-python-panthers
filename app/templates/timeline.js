@@ -1,5 +1,8 @@
 function fetchData() {
-    fetch('/api/timeline_post')
+    fetch('/api/timeline_post', {
+        method: 'POST',
+        body: formData
+    })
         // .then(response => {
         //     if (!response.ok){
         //         throw Error("ERROR");
