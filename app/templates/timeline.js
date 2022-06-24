@@ -1,5 +1,5 @@
 function fetchData() {
-    fetch("http//regres.in/api/users")
+    fetch("http://104.131.10.43:5000/timeline")
         .then(response => {
             if (!response.ok){
                 throw Error("ERROR");
