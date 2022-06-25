@@ -1,31 +1,21 @@
 function fetchData() {
-    fetch('/api/timeline_post', {
-        method: 'POST',
-        body: formData
-    })
-        // .then(response => {
-        //     if (!response.ok){
-        //         throw Error("ERROR");
-        //     }
-        //     return response.json();
-        // })
-        .then(data => {
-            const html = data.timeline_posts.map(user => {
-                    return `
-                    <div class ="timeline-user"> 
-                    <p>Name: ${user.name}</p>
-                    <p>Email: ${user. email}</p>
-                    <p>Content: ${user. content}</p>
-                    </div>
-                    `;
-        
-                })
-                .join('');
-                console.log(html);
-
+        const form = document.getElementByID('form');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+    
+            const Payload = new FormData(form);
+    
+            // console.log([...Payload])
+    
+            fetch('/api/timeline_post', {
+                method: "POST", 
+                body: Payload,
+            })
+            .then(res => res.json())
+            .then(data => console.log(data))
+            .catch(err => console.log(err))
+            
         })
-        // .catch(error => {
-        //     console.log(error);
-        // });
-}
+    }
 fetchData();
+    
