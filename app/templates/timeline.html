@@ -20,7 +20,7 @@
     
 <body>
     <div id="app"></div>
-    <form id="form" onsubmit="fetchData()">
+    <form id="form">
         <input name="name" type="text">
         <input email="email" type="text">
         <input content="content" type="text">
@@ -29,9 +29,9 @@
 
 </body>
 
-<script> async function fetchData() {
+<script> 
     const form = document.getElementByID('form');
-    form.addEventListener('submit', function(e) {
+    form.addEventListener('submit', async function(e) {
         e.preventDefault();
 
         const Payload = new FormData(form);
@@ -46,7 +46,7 @@
         .then(data => console.log(data))
         
     })
-}</script>
+</script>
 
 </script>
 </body>
