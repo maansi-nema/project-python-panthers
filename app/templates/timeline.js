@@ -1,4 +1,4 @@
-function fetchData() {
+async function fetchData() {
         const form = document.getElementByID('form');
         form.addEventListener('submit', function(e) {
             e.preventDefault();
@@ -7,7 +7,7 @@ function fetchData() {
         
             console.log([...Payload])
     
-            fetch('/api/timeline_post', {
+            await fetch('/api/timeline_post', {
                 method: "POST", 
                 body: Payload,
             })
@@ -16,5 +16,5 @@ function fetchData() {
             
         })
     }
-fetchData();
+// fetchData();
     
