@@ -1,4 +1,5 @@
 fetch('/api/timeline_post').then(response => {
+            alert("hello");
             console.log(response);
             if (!response.ok){
                 throw Error("ERROR");
