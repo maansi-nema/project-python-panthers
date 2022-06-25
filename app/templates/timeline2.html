@@ -25,7 +25,7 @@
     
 <body>
     <div id="app"></div>
-    <form id="timeline_form" onsubmit="postFormData()">
+    <form id="timeline_form" onsubmit="postFormData(e)">
         <input name="name" type="text">
         <input email="email" type="text">
         <input content="content" type="text">
@@ -36,7 +36,7 @@
 
 <script> 
    // make sure to add onsubmit="postFormData(event)" to the form
-function postFormData() {
+function postFormData(e) {
         // prevents going to the API return page
         alert("hello");
         e.preventDefault();
