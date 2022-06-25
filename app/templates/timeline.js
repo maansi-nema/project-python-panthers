@@ -30,7 +30,7 @@ fetch('/api/timeline_post').then(response => {
             const payload = new FormData(form);
             console.log([...payload])
 
-            fetch('/a[i/timeline_post', {
+            fetch('/api/timeline_post', {
                 method: 'POST',
                 boyd: payload,
             })
