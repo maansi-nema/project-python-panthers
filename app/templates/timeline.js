@@ -1,4 +1,5 @@
 fetch('/api/timeline_post').then(response => {
+            console.log(response);
             if (!response.ok){
                 throw Error("ERROR");
             }
@@ -15,7 +16,7 @@ fetch('/api/timeline_post').then(response => {
                     </div>
             
                 `;
-            }).join("");
+            }).join('');
                 console.log(html);
                 document.querySelector("#app").insertAdjacentHTML("afterbegin", html);
         }).catch(error => {
@@ -36,5 +37,4 @@ fetch('/api/timeline_post').then(response => {
             .then(res => res.json())
             .then(data => console.log(data))
             .catch(err => console.log(err))
-        })
-        
+        });
