@@ -35,31 +35,41 @@
 </body>
 
 <script> 
-   // make sure to add onsubmit="postFormData(event)" to the form
-async function postFormData() {
-        // prevents going to the API return page
-        alert("hello");
-        e.preventDefault();
+//    // make sure to add onsubmit="postFormData(event)" to the form
+// function postFormData() {
+//         // prevents going to the API return page
+//         alert("hello");
+//         e.preventDefault();
 
-        // get form data
-        const form = document.getElementById("timeline_form");
-        const formData = new FormData(form);
+//         // get form data
+//         const form = document.getElementById("timeline_form");
+//         const formData = new FormData(form);
 
-        // try POST request
-        try {
-            await fetch('/api/timeline_post', {
-                method: 'POST',
-                body: formData
-            })
+//         // try POST request
+//         try {
+//              fetch('/api/timeline_post', {
+//                 method: 'POST',
+//                 body: formData
+//             })
 
-        } catch (err) {
-            console.log('An error occured');
-        } finally {
-            reload
-            form.reset()
-            location.reload()
-        }
-    }
+//         } catch (err) {
+//             console.log('An error occured');
+//         } finally {
+//             reload
+//             form.reset()
+//             location.reload()
+//         }
+//     }
+
+document.getElementById('timeline_form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const formData= new FormData(e.target)
+  await fetch('/api/timeline_post', {
+    method: 'POST',
+    body: formData
+  });
+  location.reload()
+});
 </script>
 
 </body>
