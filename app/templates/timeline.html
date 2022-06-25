@@ -25,19 +25,20 @@
     
 <body>
     <div id="app"></div>
-    <form id="timeline_form">
+    <form id="timeline_form" onsubmit="postFormData()">
         <input name="name" type="text">
         <input email="email" type="text">
         <input content="content" type="text">
-        <button type="submit" onclick="postFormData();">Submit </button> 
+        <button type="submit">Submit </button> 
     </form>
 
 </body>
 
 <script> 
    // make sure to add onsubmit="postFormData(event)" to the form
-async function postFormData(e) {
+async function postFormData() {
         // prevents going to the API return page
+        alert("hello");
         e.preventDefault();
 
         // get form data
