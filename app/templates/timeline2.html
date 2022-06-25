@@ -42,27 +42,27 @@ function postFormData() {
         // e.preventDefault();
 
         // // get form data
-        const form = document.getElementById("timeline_form");
-        const formData = new FormData(form);
-        alert("hello2");
-        // // try POST request
-        try {
-            alert("hello3");
-             fetch('/api/timeline_post', {
-                method: 'POST',
-                body: formData
-            })
+        // const form = document.getElementById("timeline_form");
+        // const formData = new FormData(form);
+        // alert("hello2");
+        // // // try POST request
+        // try {
+        //     alert("hello3");
+        //      fetch('/api/timeline_post', {
+        //         method: 'POST',
+        //         body: formData
+        //     })
 
-        } catch (err) {
-            console.log('An error occured');
-        } finally {
-            alert("Hello 4");
-            reload
-            form.reset()
-            alert("hello 5");
-            location.reload()
-            alert(hello 6");
-        }
+        // } catch (err) {
+        //     console.log('An error occured');
+        // } finally {
+        //     alert("Hello 4");
+        //     reload
+        //     form.reset()
+        //     alert("hello 5");
+        //     location.reload()
+        //     alert(hello 6");
+        // }
     }
 </script>
 
