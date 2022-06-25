@@ -1,24 +1,40 @@
-// make sure to add onsubmit="postFormData(event)" to the form
-async function postFormData(e) {
-    // prevents going to the API return page
-    e.preventDefault();
-
-    // get form data
-    const form = document.getElementById('timeline_form');
-    const formData = new FormData(form);
-
-    // try POST request
-    try {
-        await fetch('/api/timeline_post', {
-            method: 'POST',
-            body: formData
+fetch('/api/timeline_post').then(response => {
+            if (!response.ok){
+                throw Error("ERROR");
+            }
+            return response.json();
         })
+        .then(data => {
+            console.log(data.timeline_posts);
+            const html = data.timeline_posts.map(user => {
+                return `
+                <div class= "timeline-user"> 
+                    <p>Name: ${user.name}</p>
+                    <p>Email: ${user.email}</p>
+                    <p>Content: ${user.content}</p>
+                    </div>
+            
+                `;
+            }).join("");
+                console.log(html);
+                document.querySelector("#app").insertAdjacentHTML("afterbegin", html);
+        }).catch(error => {
+            console.log(error);
+        });
 
-    } catch (err) {
-        console.log('An error occured');
-    } finally {
-        // reload
-        form.reset()
-        location.reload()
-    }
-}
+        const form = document.getElementById('timeline_form');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const payload = new FormData(form);
+            console.log([...payload])
+
+            fetch('/a[i/timeline_post', {
+                method: 'POST',
+                boyd: payload,
+            })
+            .then(res => res.json())
+            .then(data => console.log(data))
+            .catch(err => console.log(err))
+        })
+        
