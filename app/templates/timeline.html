@@ -20,7 +20,7 @@
     
 <body>
     <div id="app"></div>
-    <form id="form">
+    <form id="form" onsubmit="postFormData(event)">
         <input name="name" type="text">
         <input email="email" type="text">
         <input content="content" type="text">
@@ -30,22 +30,30 @@
 </body>
 
 <script> 
-    const form = document.getElementByID('form');
-    form.addEventListener('submit', async function(e) {
+   // make sure to add onsubmit="postFormData(event)" to the form
+async function postFormData(e) {
+        // prevents going to the API return page
         e.preventDefault();
 
-        const Payload = new FormData(form);
-    
-        console.log([...Payload])
+        // get form data
+        const form = document.getElementById('form');
+        const formData = new FormData(form);
 
-        await fetch('/api/timeline_post', {
-            method: "POST", 
-            body: Payload,
-        })
-        .then(res => res.json())
-        .then(data => console.log(data))
-        
-    })
+        // try POST request
+        try {
+            await fetch('/api/timeline_post', {
+                method: 'POST',
+                body: formData
+            })
+
+        } catch (err) {
+            console.log('An error occured');
+        } finally {
+            // reload
+            form.reset()
+            location.reload()
+        }
+    }
 </script>
 
 </script>
