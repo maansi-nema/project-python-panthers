@@ -36,7 +36,7 @@
 
 <script> 
    // make sure to add onsubmit="postFormData(event)" to the form
-function postFormData(e) {
+async function postFormData(e) {
         // prevents going to the API return page
         alert("hello");
         e.preventDefault();
@@ -49,7 +49,7 @@ function postFormData(e) {
         // // try POST request
         try {
             alert("hello3");
-             fetch('/api/timeline_post', {
+             await fetch('/api/timeline_post', {
                 method: 'POST',
                 body: formData
             })
