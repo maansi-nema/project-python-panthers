@@ -4,8 +4,8 @@ function fetchData() {
             e.preventDefault();
     
             const Payload = new FormData(form);
-    
-            // console.log([...Payload])
+        
+            console.log([...Payload])
     
             fetch('/api/timeline_post', {
                 method: "POST", 
@@ -13,7 +13,6 @@ function fetchData() {
             })
             .then(res => res.json())
             .then(data => console.log(data))
-            .catch(err => console.log(err))
             
         })
     }
