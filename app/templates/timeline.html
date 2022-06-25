@@ -25,7 +25,7 @@
     
 <body>
     <div id="app"></div>
-    <form id="form" onsubmit="postFormData(event)">
+    <form id="timeline_form" onsubmit="postFormData(event)">
         <input name="name" type="text">
         <input email="email" type="text">
         <input content="content" type="text">
@@ -41,7 +41,7 @@ async function postFormData(e) {
         e.preventDefault();
 
         // get form data
-        const form = document.getElementById("form");
+        const form = document.getElementById("timeline_form");
         const formData = new FormData(form);
 
         // try POST request
@@ -54,9 +54,9 @@ async function postFormData(e) {
         } catch (err) {
             console.log('An error occured');
         } finally {
-            // reload
-            // form.reset()
-            // location.reload()
+            reload
+            form.reset()
+            location.reload()
         }
     }
 </script>
