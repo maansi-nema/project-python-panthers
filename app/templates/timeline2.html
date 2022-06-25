@@ -47,12 +47,12 @@ function postFormData(e) {
         const formData = new FormData(form);
         alert("hello2");
         // // try POST request
-        // try {
-        //     alert("hello3");
-        //      fetch('/api/timeline_post', {
-        //         method: 'POST',
-        //         body: formData
-        //     })
+        try {
+            alert("hello3");
+             fetch('/api/timeline_post', {
+                method: 'POST',
+                body: formData
+            })
 
         // } catch (err) {
         //     console.log('An error occured');
