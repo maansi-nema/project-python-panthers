@@ -36,7 +36,7 @@ fetch('/api/timeline_post').then(response => {
                 method: 'POST',
                 body: payload,
             })
-            .then(res => res.json())
+            .then(res => res)
             .then(data => console.log(data))
             .catch(err => console.log(err))
         });
