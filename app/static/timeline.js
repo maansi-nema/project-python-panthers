@@ -36,10 +36,10 @@ fetch('/api/timeline_post').then(response => {
 
             fetch('/api/timeline_post', {
                 method: 'POST',
-                body: {'name':'maansi', 'age':12},
+                body: payload,
             })
             
-            .then(res => res.json())
+            // .then(res => res.json())
             .then(data => console.log(data))
             .catch(err => console.log(err))
             alert("hello6");
