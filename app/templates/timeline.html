@@ -1,4 +1,4 @@
-
+<!-- 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +11,7 @@
 <br><br>
 <div id="app"></div>
 
-<!-- <script> 
+//<script> 
   // make sure to add onsubmit="postFormData(event)" to the form
 async function postFormData(e) {
         // prevents going to the API return page
@@ -38,7 +38,74 @@ async function postFormData(e) {
     }
 </script> -->
 
-<script src="../static/timeline.js"></script>
+<!-- <script src="../static/timeline.js"></script>
+
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta property="og:title" content="Personal Portfolio">
+    <meta property="og:description" content="My Personal Portfolio">
+    <meta property="og:url" content="{{ url }}">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Encode+Sans:wght@900&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet">
+    
+
+    <link lang='sass' rel="stylesheet" href="/static/styles/main.css">
+    <link rel='icon' href='/static/img/favicon.ico' type='image/x-icon' />
+        <title>Get Fetch API</title>
+    
+<body>
+    <div id="app"></div>
+    <form id="timeline_form" onsubmit="postFormData(event)">
+        <input name="name" type="text">
+        <input email="email" type="text">
+        <input content="content" type="text">
+        <button type="submit">Submit</button>
+    </form>
+
+</body>
+
+<script> 
+   // make sure to add onsubmit="postFormData(event)" to the form
+async function postFormData(e) {
+        // prevents going to the API return page
+        e.preventDefault();
+
+        // get form data
+        const form = document.getElementById("timeline_form");
+        const formData = new FormData(form);
+
+        // try POST request
+        try {
+            await fetch('/api/timeline_post', {
+                method: 'POST',
+                body: formData
+            })
+
+        } catch (err) {
+            console.log('An error occured');
+        } finally {
+            reload
+            form.reset()
+            location.reload()
+        }
+    }
+</script>
 
 </body>
 
