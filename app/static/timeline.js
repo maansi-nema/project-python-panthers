@@ -31,7 +31,7 @@ fetch('/api/timeline_post').then(response => {
             e.preventDefault();
 
             const payload = new FormData(form);
-            console.log([...payload])
+           console.log([...payload])
             alert("hello5");
 
             fetch('/api/timeline_post', {
@@ -40,7 +40,7 @@ fetch('/api/timeline_post').then(response => {
             })
             
             .then(res => res.json())
-            .then(data => console.log(data))
+            //.then(data => console.log(data))
             .catch(err => console.log(err))
             alert("hello6");
         });
