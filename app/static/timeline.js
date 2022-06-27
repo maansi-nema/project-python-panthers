@@ -36,7 +36,7 @@ fetch('/api/timeline_post').then(response => {
 
             fetch('/api/timeline_post', {
                 method: 'POST',
-                body: payload,
+                body: {'name':'maansi', 'age':12},
             })
             
             .then(res => res.json())
