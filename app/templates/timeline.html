@@ -4,11 +4,11 @@
 
 <body>
 
-    <form id="timeline_form">
+    <form id="timeline_form" onsubmit=postFormData(event) >
         <input name="name" type="text" class="timeline-input" placeholder="Name"><br>
         <input email="email" type="text" class="timeline-input" placeholder="Email"><br>
         <input content="content" type="text" class="timeline-input" placeholder="Message"><br>
-        <button type="submit" onsubmit=postFormData(event) class="timeline-button">Submit</button> 
+        <button type="submit" class="timeline-button">Submit</button> 
     </form>
 <br><br>
 <div id="app"></div>
