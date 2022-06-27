@@ -2,7 +2,7 @@
   <!DOCTYPE html>
 <html lang="en">
 
-    <form id="timeline_form">
+    <form id="timeline_form" onsubmit="postFormData(event)">
         <input name="name" type="text" class="timeline-input" placeholder="Name"><br>
         <input email="email" type="text" class="timeline-input" placeholder="Email"><br>
         <input content="content" type="text" class="timeline-input" placeholder="Message"><br>
@@ -11,34 +11,34 @@
 <br><br>
 <div id="app"></div>
 
-<!-- <script> 
+<script> 
   
-// // make sure to add onsubmit="postFormData(event)" to the form
-// async function postFormData(e) {
-//         // prevents going to the API return page
-//         e.preventDefault();
+// make sure to add onsubmit="postFormData(event)" to the form
+async function postFormData(e) {
+        // prevents going to the API return page
+        e.preventDefault();
 
-//         // get form data
-//         const form = document.getElementById('timeline_form');
-//         const formData = new FormData(form);
+        // get form data
+        const form = document.getElementById('timeline_form');
+        const formData = new FormData(form);
 
-//         // try POST request
-//         try {
-//             await fetch('/api/timeline_post', {
-//                 method: 'POST',
-//                 body: formData
-//             })
+        // try POST request
+        try {
+            await fetch('/api/timeline_post', {
+                method: 'POST',
+                body: formData
+            })
 
-//         } catch (err) {
-//             console.log('An error occured');
-//         } finally {
-//             // reload
-//             form.reset()
-//             location.reload()
-//         }
-//     }
+        } catch (err) {
+            console.log('An error occured');
+        } finally {
+            reload
+            form.reset()
+            location.reload()
+        }
+    }
 
-</script> -->
+</script>
 <!-- <script src="../static/timeline.js"></script> -->
 
 <!-- </body>
