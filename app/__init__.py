@@ -1,29 +1,42 @@
+from playhouse.shortcuts import model_to_dict
+import datetime
+import email
+from multiprocessing import context 
+from peewee import *
 import os
 from flask import Flask, render_template, request
 from dotenv import load_dotenv
-from peewee import *
 
-import datetime
-from playhouse.shortcuts import model_to_dict
-load_dotenv('.env')
+#MySQL Server setup
+
+load_dotenv()
+
 app = Flask(__name__)
 
-mydb = MySQLDatabase(os.getenv("MYSQL_DATABASE"), user=os.getenv("MYSQL_USER"),
-password=os.getenv("MYSQL_PASSWORD"), host=os.getenv("MYSQL_HOST"),
-port=3306)
+mydb =MySQLDatabase(os.getenv("MYSQL_DATABASE"),
+user=os.getenv("MYSQL_USER"),
+password=os.getenv("MYSQL_PASSWORD"),
+host=os.getenv("MYSQL_HOST"),
+port=3306
+)
 
 print(mydb)
 
-class TimelinePost(Model):
+
+
+class TimelinePost(Model): 
     name = CharField()
     email = CharField()
-    content = TextField()
+    context = TextField()
     created_at = DateTimeField(default=datetime.datetime.now)
 
     class Meta:
-        database = mydb
+        database =mydb
+
 mydb.connect()
 mydb.create_tables([TimelinePost])
+
+
 
 
 @app.route('/')
@@ -32,7 +45,7 @@ def index():
 
 @app.route('/hobbies-josh')
 def hobbiesJosh():
-    return render_template('/hobbies.html', person = "Josh's Hobbies", hobby1 = "Video Games", hobby1des = "Josh likes to play video games like Lost Ark.", img1 = "./static/img/Lost Ark.png", hobby2 = "Sneakers", hobby2des = "He's also into sneakers. One of his favorites is the Jordan 3 Red Cemment shown below.", img2 = "./static/img/Jordan3.jpg" , hobby3 = "PC Builds", hobby3des = "Additionally, he also likes to research computer components and put them together. Below is a picture of the insides of a PC he be built for his parents with one of his brothers.", img3 = "./static/img/Pc build.jpg" , url=os.getenv("URL"))
+    return render_template('/hobbies.html', person = "Josh's Hobbies", hobby1 = "Video Games", hobby1des = "Josh likes to play video games like Lost Ark.", img1 = "./static/img/Lost Ark.png", hobby2 = "Sneakers", hobby2des = "He's also into sneakers. One of his favorite pairs is the Jordan 3 Red Cemment shown below.", img2 = "./static/img/Jordan3.jpg" , hobby3 = "PC Builds", hobby3des = "Additionally, he also likes to research computer components and put them together. Below is a picture of the insides of a PC he be built for his parents with one of his brothers.", img3 = "./static/img/Pc build.jpg" , url=os.getenv("URL"))
 
 @app.route('/hobbies-jul')
 def hobbiesJuli():
@@ -89,30 +102,37 @@ def joshEducation():
 def manEducation():
     return render_template('education.html', uni="University of Michigan", fact="I went to Novi High School in Novi, MI", pic1='/img/u-mich.jpg',pic2='img/u-mich2.jpg', map="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2952.0224758585864!2d-83.74041278454628!3d42.278043579192584!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x883cae38e7de1701%3A0x5ba14e5178e997e3!2sUniversity%20of%20Michigan!5e0!3m2!1sen!2sca!4v1654400474561!5m2!1sen!2sca",url=os.getenv("URL"))
 
-@app.route('/api/timeline_post', methods=['POST'])
-def post_time_line_post():
-    name = request.form['name']
-    email = request.form['email']
-    content = request.form['content']
-    timeline_post = TimelinePost.create(name=name, email=email, content=content)
 
-    return model_to_dict(timeline_post)
 
-@app.route('/api/timeline_post', methods=['GET'])
-def get_time_line_post():
-    return {
-        'timeline_posts': [
-            model_to_dict(p)
-            for p in 
-            TimelinePost.select().order_by(TimelinePost.created_at.desc())
-        ]
-    }
-
+# Timeline route
 @app.route('/timeline')
 def timeline():
     return render_template('timeline.html', title="Timeline")
 
 
 
+# post app route
+
+@app.route('/api/timeline_post', methods=['POST'])
+def post_time_line_post():
+    name = request.form['name']
+    email = request.form['email']
+    content = request.form['content']
+    timeline_post = TimelinePost.create(name=   name, email=email, content=content)
+
+    return model_to_dict(timeline_post)
 
 
+
+
+@app.route('/api/timeline_post', methods=['GET'])
+def get_time_line_post():
+    return {
+        'timeline_posts': [
+            model_to_dict(p)
+            for p in
+TimelinePost.select().order_by(TimelinePost.created_at.desc())
+        ]
+        
+
+    }
