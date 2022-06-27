@@ -41,6 +41,6 @@ fetch('/api/timeline_post').then(response => {
             
             .then(res => res.json())
             //.then(data => console.log(data))
-            .catch(err => console.log(err))
+           // .catch(err => console.log(err))
             alert("hello6");
         });
