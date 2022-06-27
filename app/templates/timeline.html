@@ -1,5 +1,5 @@
 
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
     <form id="timeline_form" onsubmit="postFormData(event)">
@@ -12,34 +12,26 @@
 <div id="app"></div>
 
 <script> 
+  const form = document.getElementByID('form');
+  form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const Payload = new FormData(form);
   
-// make sure to add onsubmit="postFormData(event)" to the form
-async function postFormData(e) {
-        // prevents going to the API return page
-        e.preventDefault();
+      console.log([...Payload])
 
-        // get form data
-        const form = document.getElementById('timeline_form');
-        const formData = new FormData(form);
-
-        // try POST request
-        try {
-            await fetch('/api/timeline_post', {
-                method: 'POST',
-                body: formData
-            })
-
-        } catch (err) {
-            console.log('An error occured');
-        } finally {
-            // reload
-            form.reset()
-            location.reload()
-        }
-    }
+      await fetch('/api/timeline_post', {
+          method: "POST", 
+          body: Payload,
+      })
+      .then(res => res.json())
+      .then(data => console.log(data))
+      
+  })
 </script>
+
 <!-- <script src="../static/timeline.js"></script> -->
 
-<!-- </body>
+</body>
 
-</html> -->
+</html>
