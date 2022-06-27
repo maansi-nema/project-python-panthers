@@ -2,16 +2,18 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<body>
+
     <form id="timeline_form">
         <input name="name" type="text" class="timeline-input" placeholder="Name"><br>
         <input email="email" type="text" class="timeline-input" placeholder="Email"><br>
         <input content="content" type="text" class="timeline-input" placeholder="Message"><br>
-        <button type="submit" class="timeline-button">Submit </button> 
+        <button type="submit" onsubmit=postFormData(event) class="timeline-button">Submit</button> 
     </form>
 <br><br>
 <div id="app"></div>
 
-<!-- <script> 
+<script> 
   // make sure to add onsubmit="postFormData(event)" to the form
 async function postFormData(e) {
         // prevents going to the API return page
@@ -36,9 +38,9 @@ async function postFormData(e) {
             location.reload()
         }
     }
-</script> -->
+</script>
 
-<script src="../static/timeline.js"></script>
+<!-- <script src="../static/timeline.js"></script> -->
 
 </body>
 
