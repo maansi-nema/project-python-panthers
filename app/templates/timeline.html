@@ -1,46 +1,50 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
+<head>
+    {% include "main/header.html" %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
 <body>
-  <div id="app"></div>
-    <form id="timeline_form" onsubmit=postFormData(event) >
-        <input name="name" type="text" class="timeline-input" placeholder="Name"><br>
-        <input email="email" type="text" class="timeline-input" placeholder="Email"><br>
-        <input content="content" type="text" class="timeline-input" placeholder="Message"><br>
-        <button type="submit" class="timeline-button">Submit</button> 
-    </form>
-<br><br>
+    {% include "navbar.html" %}
+    <h1>Create a Post: </h1>
+    <form>
 
-<script> 
-  // make sure to add onsubmit="postFormData(event)" to the form
-async function postFormData(e) {
-        // prevents going to the API return page
-        e.preventDefault();
+    <!--- Name of person --->
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name" value=""><br>
 
-        // get form data
-        const form = document.getElementById('timeline_form');
-        const formData = new FormData(form);
+     <!--- Person's email --->
+    <label for="email">Email:</label><br>
+    <input type="text" id="email" name="email" value=""><br>
 
-        // try POST request
-        try {
-            await fetch('/api/timeline_post', {
-                method: 'POST',
-                body: formData
-            })
-            console.log(formData);
-        } catch (err) {
-            console.log('An error occured');
-        } finally {
-            // reload
-            form.reset()
-            location.reload()
-        }
+    <!--- Content of Post --->
+    <label for="content">Content:</label><br>
+    <input type="text" id="content" email="content" value=""><br>
+
+     <!--- Submitting post --->
+     <button type="button">Submit</button>
+
+
+
+     <script>
+    const form = document.getElementById('form')
+    form.addEventListener('submit' , function() {
+    e.preventDefault();
+    const prepayload = new FormData(form);
+    const payload = new URLSearchParams(payload);
+    fetch('/api/timeline_post') ,{method: "POST", body: payload
     }
-</script>
-
-<!-- <script src="../static/timeline.js"></script> -->
-
+    .then(res => res.json())
+    .then(data => console.log(data))
+    .then(err => console.log(error))
+        
+    })
+    
+     </script>
+    
+    </form>
 </body>
-
 </html>
