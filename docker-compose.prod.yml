@@ -38,4 +38,4 @@ services:
 
 volumes:
   mydatabase:
-  nginux_secrets
+  nginux_secrets:
