@@ -35,7 +35,6 @@ services:
     depends_on:
       - myportfolio
 
-
 volumes:
   mydatabase:
   nginx_secrets:
