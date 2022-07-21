@@ -1,4 +1,3 @@
-echo "lol"
 #!/bin/bash
 echo "0"
 git fetch && git reset origin/main --hard
